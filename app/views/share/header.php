@@ -27,7 +27,7 @@
         <div id="wrapper">
 
             <!-- Sidebar -->
-            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+            <ul style="background-image: linear-gradient(180deg, #e9b74b 10%, #4e9857 100%);" class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
                 <!-- Sidebar - Brand -->
                 <a style="background-color: #672929;" class="sidebar-brand d-flex align-items-center justify-content-center" href="http://localhost/QLBanXe/product/listProducts">
@@ -43,26 +43,33 @@
                 <hr class="sidebar-divider my-0">
 
                 <!-- Nav Item - Dashboard -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">
+                <li class="nav-item active display: flex-col">
+                    <a class="nav-link" href="home">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Home</span></a>
+                        <span style="font-size:24px;">Home</span></a>
+                        <a class="nav-link" href="home">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span style="font-size:24px;">Home</span></a>
+                        <a class="nav-link" href="home">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span style="font-size:24px;">Home</span></a>
                 </li>
 
                 <!-- Divider -->
                 <hr class="sidebar-divider">
 
                 <!-- Heading -->
-                <div class="sidebar-heading">
+                <div style="font-size:18px; font-weight: bold; color:#672929" class="sidebar-heading">
                     Account
                 </div>
 
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="register" data-toggle="collapse" data-target="#collapseTwo"
+                    <!-- <a class="nav-link collapsed" href="register" data-toggle="collapse" data-target="#collapseTwo" -->
+                    <a class="nav-link collapsed" href="register" data-target="#collapseTwo"    
                         aria-expanded="true" aria-controls="collapseTwo">
                         <i class="fas fa-fw fa-cog"></i>
-                        <span>Đăng Ký</span>
+                        <span style="font-size:24px;font-weight:bold">Đăng Ký</span>
                     </a>
                     <!-- <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
@@ -75,10 +82,10 @@
 
                 <!-- Nav Item - Utilities Collapse Menu -->
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="login" data-toggle="collapse" data-target="#collapseUtilities"
+                    <a class="nav-link collapsed" href="login" data-target="#collapseUtilities"
                         aria-expanded="true" aria-controls="collapseUtilities">
                         <i class="fas fa-fw fa-wrench"></i>
-                        <span>Đăng Nhập</span>
+                        <span style="font-size:24px;font-weight:bold">Đăng Nhập</span>
                     </a>
                     <!-- <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                         data-parent="#accordionSidebar">
@@ -96,7 +103,7 @@
                 <hr class="sidebar-divider">
 
                 <!-- Heading -->
-                <div class="sidebar-heading">
+                <div style="font-size:18px; font-weight: bold; color:#672929" class="sidebar-heading">
                     Addons
                 </div>
 
@@ -154,13 +161,13 @@
             <!-- End of Sidebar -->
 
             <!-- Content Wrapper -->
-            <div id="content-wrapper" class="d-flex flex-column">
+            <div style="background-color: #ffffff;" id="content-wrapper" class="d-flex flex-column">
 
                 <!-- Main Content -->
                 <div id="content">
 
                     <!-- Topbar -->
-                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    <nav style="    background-color: #e9b74b !important;" class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                         <!-- Sidebar Toggle (Topbar) -->
                         <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">

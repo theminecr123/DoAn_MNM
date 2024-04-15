@@ -49,9 +49,11 @@ $emailValue = isset($_POST['email']) ? $_POST['email'] : '';
   cursor: pointer;
   transition: border-color 0.3s ease;
   border: 1px dashed black;
-  width:150px;
+  width:120px;
   height:50px;
   margin-left:50px;
+  background-color: white;
+  padding-left:20px;
 }
 
 .custom-select:focus {
