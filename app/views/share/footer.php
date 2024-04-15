@@ -1,9 +1,9 @@
 
   <!-- Footer -->
-            <footer style="margin-top:200px;" class="sticky-footer bg-white">
+            <footer style="margin-top:600px;width:1400px;margin-left:-100px;background-color: #672929 !important;color:white;" class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span style="font-weight:bold;font-size:24px">Copyright &copy; 2024 RICE B2</span>
                     </div>
                 </div>
             </footer>

@@ -9,7 +9,9 @@ class AccountController{
     function login(){
         include_once 'app/views/account/login.php';
     }
-
+    function home(){
+        include_once 'app/views/share/home.php';
+    }
     //Ma hoa mat khau bang BCrypt
     function register(){
         include_once 'app/views/account/register.php';
@@ -18,7 +20,7 @@ class AccountController{
     
     function logout(){
         if(!empty($_SESSION['id'])){
-            header('Location: /QLBanXe/account/login');
+            header('Location: /DoAn_MNM/account/login');
             session_destroy();
             exit;
         }
@@ -60,7 +62,7 @@ class AccountController{
                 $result = $this->accountModel->createAccount($name, $email, $password, $role);
                 if($result){
                     // Tài khoản được tạo thành công, chuyển hướng đến trang đăng nhập
-                    header('Location: /QLBanXe/account/login');
+                    header('Location: /DoAn_MNM/account/login');
                     exit; // Dừng kịch bản sau khi chuyển hướng
                 } else {
                     // Xảy ra lỗi khi tạo tài khoản, hiển thị thông báo lỗi

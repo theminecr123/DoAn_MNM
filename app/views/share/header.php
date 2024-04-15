@@ -6,8 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
+        <link rel="shortcut icon" href="https://i.imgur.com/RxUqBxZ.png" type="image/x-icon">
 
-        <title>SB Admin 2 - Dashboard</title>
+        <title>RICE</title>
 
         <!-- Custom fonts for this template-->
         <link href="/QLBanXe/public//vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -29,11 +30,13 @@
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
                 <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="http://localhost/QLBanXe/product/listProducts">
+                <a style="background-color: #672929;" class="sidebar-brand d-flex align-items-center justify-content-center" href="http://localhost/QLBanXe/product/listProducts">
                     <div class="sidebar-brand-icon rotate-n-15">
                         <i class="fas fa-laugh-wink"></i>
                     </div>
-                    <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                    <!-- <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div> -->
+                    <img style="width:50px; height:50px" src="https://i.imgur.com/RxUqBxZ.png" />
+                    <div style="font-size:35px; margin-left:-20px;" class="sidebar-brand-text mx-3">RICE</div>
                 </a>
 
                 <!-- Divider -->
@@ -41,9 +44,9 @@
 
                 <!-- Nav Item - Dashboard -->
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="/">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard</span></a>
+                        <span>Home</span></a>
                 </li>
 
                 <!-- Divider -->
@@ -51,33 +54,33 @@
 
                 <!-- Heading -->
                 <div class="sidebar-heading">
-                    Interface
+                    Account
                 </div>
 
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    <a class="nav-link collapsed" href="register" data-toggle="collapse" data-target="#collapseTwo"
                         aria-expanded="true" aria-controls="collapseTwo">
                         <i class="fas fa-fw fa-cog"></i>
-                        <span>Components</span>
+                        <span>Đăng Ký</span>
                     </a>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <!-- <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Custom Components:</h6>
                             <a class="collapse-item" href="buttons.html">Buttons</a>
                             <a class="collapse-item" href="cards.html">Cards</a>
                         </div>
-                    </div>
+                    </div> -->
                 </li>
 
                 <!-- Nav Item - Utilities Collapse Menu -->
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    <a class="nav-link collapsed" href="login" data-toggle="collapse" data-target="#collapseUtilities"
                         aria-expanded="true" aria-controls="collapseUtilities">
                         <i class="fas fa-fw fa-wrench"></i>
-                        <span>Utilities</span>
+                        <span>Đăng Nhập</span>
                     </a>
-                    <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    <!-- <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Custom Utilities:</h6>
@@ -86,7 +89,7 @@
                             <a class="collapse-item" href="utilities-animation.html">Animations</a>
                             <a class="collapse-item" href="utilities-other.html">Other</a>
                         </div>
-                    </div>
+                    </div> -->
                 </li>
 
                 <!-- Divider -->
@@ -141,11 +144,11 @@
                 </div>
 
                 <!-- Sidebar Message -->
-                <div class="sidebar-card d-none d-lg-flex">
+                <!-- <div class="sidebar-card d-none d-lg-flex">
                     <img class="sidebar-card-illustration mb-2" src="/QLBanXe/public//images/undraw_rocket.svg" alt="...">
                     <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
                     <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-                </div>
+                </div> -->
 
             </ul>
             <!-- End of Sidebar -->
@@ -165,7 +168,7 @@
                         </button>
 
                         <!-- Topbar Search -->
-                        <form
+                        <!-- <form
                             class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                             <div class="input-group">
                                 <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
@@ -176,7 +179,7 @@
                                     </button>
                                 </div>
                             </div>
-                        </form>
+                        </form> -->
 
                         <!-- Topbar Navbar -->
                         <ul class="navbar-nav ml-auto">
@@ -190,7 +193,7 @@
                                     <a class="nav-link" href="/QLBanXe/cart/show" style="font-size: 20px;">
                                         <!-- <i class="fas fa-shopping-cart fa-fw"></i>
                                         <span class="badge badge-danger badge-counter">Xem giỏ hàng</span> -->
-                                        <button class="CartBtn">
+                                        <button style="margin-top:20px;" class="CartBtn">
                                         <span class="IconContainer"> 
                                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"></path></svg>
                                         </span>

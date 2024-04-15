@@ -10,9 +10,13 @@ class DefaultController{
     public function index(){
         //Gatewaycx
         if(!SessionHelper::isLoggedIn()){
-            header('Location: /QLBanXe/account/login');
+            header('Location: /DoAn_MNM/account/login');
         }else{
-            header('Location: /QLBanXe/product/listProducts');
+            header('Location: /DoAn_MNM/product/listProducts');
+        }
+
+        function home() {
+            header('Location: /DoAn_MNM/share/home');
         }
 
         $products = $this->productModel->readAll();
