@@ -4,6 +4,8 @@ include_once 'app/views/share/header.php';
 // Tính tổng giá trị của giỏ hàng
 $totalCartValue = 0;
 
+echo "Dia chi:" . $_SESSION['address'];
+
 if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
     // echo "Giỏ hàng đang trống!";
     echo '<div style="font-weight:bold; font-size:50px; color: #333; padding: 10px; border-radius: 4px; text-align: center;">Giỏ hàng đang trống!</div>';
@@ -30,7 +32,7 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
         echo "<td class='table-header-item'>$item->id</td>";
         echo "<td class='table-header-item'>$item->name</td>";
         echo "<td class='table-header-item'>" . number_format($item->price, 0, ',', '.') . " </td>";
-        echo "<td class='table-header-item'><img src='/QLBanXe/$item->image' alt='Product Image' style='width:120px; height:120px; border-radius:10px;'></td>";
+        echo "<td class='table-header-item'><img src='/DoAn_MNM/$item->image' alt='Product Image' style='width:120px; height:120px; border-radius:10px;'></td>";
         echo "<td>
                 <input name='id' type='hidden' value='$item->id' /> 
                 <input name='quantity' type='number' value='$item->quantity' class='quantityInput' data-id='$item->id'/> <!-- Thêm data-id để xác định sản phẩm -->
@@ -45,33 +47,38 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
     echo "</table>";
     // Thêm một định dạng mới với id 'totalCartValueContainer'
     echo "<p id='totalCartValueContainer'>Total Cart Value: <span id='totalCartValue'></span></p>";
-    if (isset($_POST['checkout_form'])) {
-        echo "<h3>Thông tin giao hàng</h3>";
-        echo "<form action='/QLBanXe/order/showCheckoutForm' method='post'>";
-        echo "<div class='form-group'>";
-        echo "<label for='name'>Họ và tên: (bắt buộc)</label>";
-        echo "<input type='text' name='name' id='name' class='form-control' required>";
-        echo "</div>";
-        echo "<div class='form-group'>";
-        echo "<label for='address'>Địa chỉ: (bắt buộc)</label>";
-        echo "<input type='text' name='address' id='address' class='form-control' required>";
-        echo "</div>";
-        echo "<div class='form-group'>";
-        echo "<label for='phone'>Số điện thoại: (bắt buộc)</label>";
-        echo "<input type='text' name='phone' id='phone' class='form-control' required>";
-        echo "</div>";
-        echo "<input type='submit' value='Đặt hàng' class='btn btn-primary'>";
-        echo "</form>";
-    } else {
-        echo "<form action='' method='post'>";
-        echo "<input type='hidden' name='checkout_form' value='1'>";  
-        echo "<input class='button-checkout' type='submit' value='Thanh toán'>";
-        echo "</form>";
-    }
+    echo "<form action='/DoAn_MNM/order/showCheckoutForm' method='post' id='checkoutForm'>";
+    echo "<input type='hidden' name='checkout_form' value='1'>";
+    echo "<input class='button-checkout' type='submit' value='Thanh toán'>";
+    echo "</form>";
+    
 }
 include_once 'app/views/share/footer.php';
-?>
 
+echo '<script>';
+if (isset($_SESSION['id'])) {
+    echo 'var isLoggedIn = true;';
+} else {
+    echo 'var isLoggedIn = false;';
+}
+
+echo '</script>';
+
+
+?>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+document.getElementById('checkoutForm').addEventListener('submit', function(event) {
+    console.log('isLocate:', isLocate); // Add this line to log the isLocate variable
+    
+    if (!isLoggedIn) {
+        window.location.href = '/DoAn_MNM/account/login';
+        event.preventDefault();
+        return;
+    }
+});
+
+</script>
 <script>
 function updateItemTotal() {
     document.querySelectorAll('.display tbody tr').forEach(row => {
@@ -139,7 +146,7 @@ function updateCartItem(id, quantity) {
     formData.append('id', id);
     formData.append('quantity', quantity);
 
-    fetch('/QLBanXe/cart/updateQuantity/', {
+    fetch('/DoAn_MNM/cart/updateQuantity/', {
         method: 'POST',
         body: formData
     })
@@ -161,7 +168,7 @@ function updateCartItem(id, quantity) {
 
 // Function để gửi yêu cầu xoá sản phẩm khỏi giỏ hàng
 function deleteCartItem(id) {
-    fetch('/QLBanXe/cart/deleteItem/' + id, {
+    fetch('/DoAn_MNM/cart/deleteItem/' + id, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'

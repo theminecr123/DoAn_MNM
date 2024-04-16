@@ -104,7 +104,7 @@
                         $itemTotal = $item->price * $item->quantity;
                         $totalCartValue += $itemTotal;
                         echo "<tr>";
-                        echo "<td><img src='/QLBanXe/{$item->image}' alt='Product Image' width='100' height='100'></td>";
+                        echo "<td><img src='/DoAn_MNM/{$item->image}' alt='Product Image' width='100' height='100'></td>";
                         echo "<td>{$item->id}</td>";
                         echo "<td>{$item->name}</td>";
                         echo "<td>" . number_format($item->price, 0, ',', '.') . " VND</td>";
@@ -124,7 +124,7 @@
         
         <!-- Checkout Form -->
         <section class="checkout-form">
-            <form action="/QLBanXe/order/createOrder" method="post">
+            <form action="/DoAn_MNM/order/createOrder" method="post">
                 <input type="hidden" name="total" value="<?php echo $totalCartValue; ?>"> <!-- Use cart total -->
                 <input type="hidden" name="orderDetails" value="<?php echo htmlspecialchars(json_encode($_SESSION['cart'])); ?>"> <!-- Send cart info as JSON -->
                 

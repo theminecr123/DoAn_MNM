@@ -29,7 +29,7 @@ class CartController
                 $product->quantity = 1;
                 $_SESSION['cart'][] = $product;
             }
-            header('Location: /QLBanXe/cart/show');
+            header('Location: /DoAn_MNM/cart/show');
         } else {
             echo "Không tìm thấy sản phẩm với ID này!";
         }
@@ -48,7 +48,7 @@ class CartController
                 break;
             }
         }
-        header('Location: /QLBanXe/cart/show');
+        header('Location: /DoAn_MNM/cart/show');
     }
 
     // Hàm để cập nhật số lượng sản phẩm trong giỏ hàng

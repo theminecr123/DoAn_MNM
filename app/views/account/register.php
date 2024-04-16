@@ -16,7 +16,7 @@ $emailValue = isset($_POST['email']) ? $_POST['email'] : '';
 
 ?>
 
-<form style="margin-left:300px" class="user" action="/QLBanXe/account/save" method="POST" enctype="multipart/form-data">
+<form style="margin-left:300px" class="user" action="/DoAn_MNM/account/save" method="POST" enctype="multipart/form-data">
     <div style="margin-left:50px; width:500px; font-size:18px; border: 1px dashed black;border-radius:50px" class="form-group">
         <input type="text" class="form-control form-control-user" placeholder="Fullname" name="name" value="<?php echo htmlspecialchars($nameValue); ?>">   
     </div> 

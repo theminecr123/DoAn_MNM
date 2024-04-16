@@ -1,43 +1,67 @@
 <?php
-class AccountModel{
+class AccountModel {
     private $conn;
     private $table_name = "accounts";
-    public function __construct($db)
-    {
+
+    public function __construct($db) {
         $this->conn = $db;
     }
-    function createAccount($name, $email, $password, $role){
 
-        $query = "INSERT INTO " . $this->table_name . " (name, email, password, role) VALUES (:name, :email, :password, :role)";
+
+    public function createAccount($name, $email, $password, $role, $address) {
+        $query = "INSERT INTO " . $this->table_name . " (name, email, password, role, address) VALUES (:name, :email, :password, :role, :address)";
         $stmt = $this->conn->prepare($query);
 
-        // Làm sạch dữ liệu
+        // Clean and bind data
         $name = htmlspecialchars(strip_tags($name));
         $email = htmlspecialchars(strip_tags($email));
         $password = htmlspecialchars(strip_tags($password));
         $role = htmlspecialchars(strip_tags($role));
+        $address = htmlspecialchars(strip_tags($address));
 
-
-        // Gán dữ liệu vào câu lệnh
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':password', $password);
         $stmt->bindParam(':role', $role);
+        $stmt->bindParam(':address', $address);
 
-        // Thực thi câu lệnh
-        if ($stmt->execute()) {
-            return true;
-        }
+        // Execute the statement
+        return $stmt->execute();
     }
 
-    function getAccountByEmail($email){
-        $query = "SELECT * FROM ". $this->table_name." where email = :email";
 
+    public function getAccountByEmail($email) {
+        $query = "SELECT * FROM " . $this->table_name . " WHERE email = :email";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(":email", $email);
+        $stmt->bindParam(':email', $email);
         $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_OBJ);
-        return $result;
 
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
+
+    public function getAccountById($userId) {
+        $query = "SELECT * FROM " . $this->table_name . " WHERE id = :userId";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':userId', $userId);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_OBJ);
+    }
+
+    public function updateAccount($userId, $name, $email, $address) {
+        $query = "UPDATE " . $this->table_name . " SET name = :name, email = :email, address = :address WHERE id = :userId";
+        $stmt = $this->conn->prepare($query);
+
+        // Clean and bind data
+        $name = htmlspecialchars(strip_tags($name));
+        $email = htmlspecialchars(strip_tags($email));
+        $address = htmlspecialchars(strip_tags($address));
+
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':address', $address);
+        $stmt->bindParam(':userId', $userId);
+
+        return $stmt->execute();
     }
 }
