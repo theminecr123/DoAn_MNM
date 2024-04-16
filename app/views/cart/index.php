@@ -5,8 +5,12 @@ include_once 'app/views/share/header.php';
 $totalCartValue = 0;
 
 if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
-    echo "Giỏ hàng trống!";
-} else {
+    // echo "Giỏ hàng đang trống!";
+    echo '<div style="font-weight:bold; font-size:50px; color: #333; padding: 10px; border-radius: 4px; text-align: center;">Giỏ hàng đang trống!</div>';
+    echo '<img style="margin-left:350px;margin-top:-10px;" src="https://cdnl.iconscout.com/lottie/premium/thumb/shopping-bag-6866084-5624247.gif"/>';
+    echo '<img style="width:120px; height:100px;transform: rotate(190deg);margin-left:-930px;margin-top:-350px;" src="https://media3.giphy.com/media/VSeTR5iGkgDwrS9cff/giphy.gif?cid=6c09b952jpuvbm6rvonzib9iftzi5x5vf5uppm96ys7vci1b&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=s"/>';
+    echo '<span style="border: 2px dashed red;border-radius:10px;padding:20px;margin-left:-100px;margin-top:-350px;">Bạn bấm vào "Sản Phẩm để thêm vào giỏ hàng nhé!"</span>';
+    } else {
     echo "<h2>Danh sách giỏ hàng</h2>";
     echo "<table id='cartTable' class='display'>";
     echo "<thead>";

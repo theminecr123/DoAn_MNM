@@ -30,7 +30,7 @@
             <ul style="background-image: linear-gradient(180deg, #e9b74b 10%, #4e9857 100%);" class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
                 <!-- Sidebar - Brand -->
-                <a style="background-color: #672929;" class="sidebar-brand d-flex align-items-center justify-content-center" href="http://localhost/QLBanXe/product/listProducts">
+                <a style="background-color: #672929;" class="sidebar-brand d-flex align-items-center justify-content-center" href="http://localhost:8089/DoAn_MNM/account/home">
                     <div class="sidebar-brand-icon rotate-n-15">
                         <i class="fas fa-laugh-wink"></i>
                     </div>
@@ -44,15 +44,15 @@
 
                 <!-- Nav Item - Dashboard -->
                 <li class="nav-item active display: flex-col">
-                    <a class="nav-link" href="home">
+                    <a class="nav-link" href="http://localhost:8089/DoAn_MNM/account/home">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span style="font-size:24px;">Home</span></a>
-                        <a class="nav-link" href="home">
+                        <a class="nav-link" href="http://localhost:8089/DoAn_MNM/product/listProducts">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span style="font-size:24px;">Home</span></a>
-                        <a class="nav-link" href="home">
+                        <span style="font-size:24px;">Sản Phẩm</span></a>
+                        <a class="nav-link" href="http://localhost:8089/DoAn_MNM/cart/show">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span style="font-size:24px;">Home</span></a>
+                        <span style="font-size:24px;">Giỏ Hàng</span></a>
                 </li>
 
                 <!-- Divider -->
