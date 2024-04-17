@@ -51,13 +51,26 @@
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span style="font-size:24px;">Sản Phẩm</span></a>
                         <a class="nav-link" href="/DoAn_MNM/cart/show">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span style="font-size:24px;">Giỏ Hàng</span></a>
-                        <a class="nav-link" href="/DoAn_MNM/order/showOrderHistory">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span style="font-size:24px;">Lịch Sử Mua Hàng</span></a>
+                        
                 </li>
+                <?php
+                    if (isset($_SESSION['role'])) {
+                        if($_SESSION['role'] != "admin"){
+                            echo'
+                            <hr class="sidebar-divider">
+    
+                            <li class="nav-item active display: flex-col">
+                            <i class="fas fa-fw fa-tachometer-alt"></i>
+                            <span style="font-size:24px;">Giỏ Hàng</span></a>
+                            <a class="nav-link" href="/DoAn_MNM/order/showOrderHistory">
+                            <i class="fas fa-fw fa-tachometer-alt"></i>
+                            <span style="font-size:24px;">Lịch Sử Mua Hàng</span></a>
+                            </li>';
+                        }
+                        
 
+                    }
+                ?>
                 <!-- Divider -->
 
                 <!-- Heading -->
