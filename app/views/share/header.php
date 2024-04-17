@@ -50,7 +50,8 @@
                         <a class="nav-link" href="/DoAn_MNM/product/listProducts">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span style="font-size:24px;">Sản Phẩm</span></a>
-                        <a class="nav-link" href="/DoAn_MNM/cart/show">
+                        <!-- <a class="nav-link" href="/DoAn_MNM/cart/show">
+                        <span style="font-size:24px;">Giỏ Hàng</span></a> -->
                         
                 </li>
                 <?php
@@ -60,11 +61,12 @@
                             <hr class="sidebar-divider">
     
                             <li class="nav-item active display: flex-col">
+                            <a class="nav-link" href="/DoAn_MNM/cart/show">
                             <i class="fas fa-fw fa-tachometer-alt"></i>
-                            <span style="font-size:24px;">Giỏ Hàng</span></a>
+                            <span style="font-size:24px; font-weight:bold;color:white;">Giỏ Hàng</span></a>
                             <a class="nav-link" href="/DoAn_MNM/order/showOrderHistory">
                             <i class="fas fa-fw fa-tachometer-alt"></i>
-                            <span style="font-size:24px;">Lịch Sử Mua Hàng</span></a>
+                            <span style="font-size:22px;">Lịch Sử Mua Hàng</span></a>
                             </li>';
                         }
                         
@@ -111,17 +113,17 @@
                 <hr class="sidebar-divider">
 
                 <!-- Heading -->
-                <div style="font-size:18px; font-weight: bold; color:#672929" class="sidebar-heading">
+                <!-- <div style="font-size:18px; font-weight: bold; color:#672929" class="sidebar-heading">
                     Addons
-                </div>
+                </div> -->
 
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                    <!-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                         aria-expanded="true" aria-controls="collapsePages">
                         <i class="fas fa-fw fa-folder"></i>
                         <span>Pages</span>
-                    </a>
+                    </a> -->
                     <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Login Screens:</h6>
@@ -176,7 +178,7 @@
                                             <li class="nav-item">
                                                 <a class="nav-link" href="/DoAn_MNM/cart/show" style="font-size: 20px;">
                                                     
-                                                    <button style="margin-top:20px;margin-left:-750px;" class="CartBtn">
+                                                    <button style="margin-top:20px;margin-left:-600px;" class="CartBtn">
                                                     <span class="IconContainer"> 
                                                     <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"></path></svg>
                                                     </span>
@@ -203,25 +205,16 @@
                                         if(isset($_SESSION['name'])){
                                             echo '<a href="../account/info" style="position:absolute; top:-90px; left: 800px; font-size:30px;color: white; font-weight:bold; text-decoration: none; margin-left:-140px;margin-top:105px;">' . $_SESSION['name'] . ' | ' . $_SESSION['role'] . '</a>';
                                             // echo "<a class='btn btn-danger' href='../account/logout'>Đăng Xuất2</a>";
+                                        
                                             echo '
                                             <a href="../account/logout">
-                                            <button class="Btn">
-                                            <div class="sign">
-                                                <svg viewBox="0 0 512 512">
-                                                <path
-                                                    d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"
-                                                ></path>
-                                                </svg>
-                                            </div>
-
-                                            <div class="text">Đăng Xuất</div>
-                                            </button>
+                                            <button class="button22"></button>
                                             </a>
                                             ';
                                     }
                                         ?>
                                     </span>
-                                    <img width="50px" style="position:absolute; margin-left:-230px;margin-top:10px" class="img-profile rounded-circle" src="/DoAn_MNM/public//images/undraw_profile.svg">
+                                    <img width="50px" style="position:absolute; margin-left:-80px;margin-top:5px" class="img-profile rounded-circle" src="/DoAn_MNM/public//images/undraw_profile.svg">
                                     
 
                         </ul>
@@ -232,75 +225,71 @@
                     <!-- Begin Page Content -->
                     <div class="container-fluid">
 
-                    <style>
-                        .Btn {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 45px;
-  height: 45px;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
+<style>
+.button22 {
   position: relative;
+  background-color: transparent;
+  color: #e8e8e8;
+  font-size: 17px;
+  font-weight: 600;
+  border-radius: 10px;
+  width: 150px;
+  height: 60px;
+  border: none;
+  text-transform: uppercase;
+  cursor: pointer;
   overflow: hidden;
-  transition-duration: 0.3s;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
-  background-color: RGB(29, 185, 84);
-  margin-top:15px;
-  margin-left: -180px;
+  box-shadow: 0 10px 20px rgba(51, 51, 51, 0.2);
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  margin-top:3px;
 }
 
-/* plus sign */
-.sign {
-  width: 100%;
-  transition-duration: 0.3s;
+.button22::before {
+  content: "Chào Bạn!";
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: 100%;
+  /* pointer-events: none; */
+  background: linear-gradient(135deg,#7b4397,#dc2430 );
+  transform: translate(0%,90%);
+  z-index: 99;
+  position: relative;
+  transform-origin: bottom;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
-.sign svg {
-  width: 18px;
+.button22::after {
+  content: "Đăng Xuất";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #333;
+  width: 100%;
+  height: 100%;
+  /* pointer-events: none; */
+  transform-origin: top;
+  transform: translate(0%,-100%);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
-.sign svg path {
-  fill: black;
-}
-/* text */
-.text {
-  position: absolute;
-  right: 0%;
-  width: 0%;
-  opacity: 0;
-  color: black;
-  font-size: 18px;
-  font-weight: 600;
-  transition-duration: 0.3s;
-}
-/* hover effect on button width */
-.Btn:hover {
-  width: 185px;
-  border-radius: 40px;
-  transition-duration: 0.3s;
+.button22:hover::before {
+  transform: translate(0%,0%);
 }
 
-.Btn:hover .sign {
-  width: 30%;
-  transition-duration: 0.3s;
-  padding-left: 20px;
+.button22:hover::after {
+  transform: translate(0%,-200%);
 }
-/* hover effect button's text */
-.Btn:hover .text {
-  opacity: 1;
-  width: 70%;
-  transition-duration: 0.3s;
-  padding-right: 10px;
+
+.button22:focus {
+  outline: none;
 }
-/* button click effect*/
-.Btn:active {
-  transform: translate(2px, 2px);
+
+.button22:active {
+  scale: 0.95;
 }
+
 
 
                     </style>
