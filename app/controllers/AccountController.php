@@ -59,10 +59,10 @@ class AccountController{
                 include_once 'app/views/account/register.php';
             } else {
                 //$password = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
-                $result = $this->accountModel->createAccount($name, $email, $password, $role);
+                $result = $this->accountModel->createAccount($name, $email, $password, $role, "");
                 if($result){
                     // Tài khoản được tạo thành công, chuyển hướng đến trang đăng nhập
-                    header('Location: /account/login');
+                    header('Location: ../account/login');
                     exit; // Dừng kịch bản sau khi chuyển hướng
                 } else {
                     // Xảy ra lỗi khi tạo tài khoản, hiển thị thông báo lỗi
