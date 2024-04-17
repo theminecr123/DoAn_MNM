@@ -46,7 +46,7 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
     echo "</tbody>";
     echo "</table>";
     // Thêm một định dạng mới với id 'totalCartValueContainer'
-    echo "<p id='totalCartValueContainer'>Total Cart Value: <span id='totalCartValue'></span></p>";
+    echo "<p style='font-weight:bold; color:black; font-size:24px;' id='totalCartValueContainer'>Total Cart Value: <span id='totalCartValue'></span></p>";
     echo "<form action='/DoAn_MNM/order/showCheckoutForm' method='post' id='checkoutForm'>";
     echo "<input type='hidden' name='checkout_form' value='1'>";
     echo "<input class='button-checkout' type='submit' value='Thanh toán'>";
