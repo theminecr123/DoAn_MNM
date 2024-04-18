@@ -1,9 +1,12 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <?php include_once 'app/views/share/header.php'; ?>
-
+<link rel="stylesheet" href="../public/css/style.css">
 <div class="container-fluid">
 
+<head>
+<link href="/DoAn_MNM/public//css/style.css" rel="stylesheet">
+</head>
     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
         <a href="add">
             <button style="margin-left: -3px;" class="btn-add-product">Thêm Sản Phẩm</button>
@@ -83,6 +86,8 @@
         
     <?php endif; ?>
 </div>
+
+
 
 <?php include_once 'app/views/share/footer.php'; ?>
 
