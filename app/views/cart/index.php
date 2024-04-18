@@ -47,11 +47,22 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
     echo "</table>";
     // Thêm một định dạng mới với id 'totalCartValueContainer'
     echo "<p style='font-weight:bold; color:black; font-size:24px;' id='totalCartValueContainer'>Total Cart Value: <span id='totalCartValue'></span></p>";
-    echo "<form action='/DoAn_MNM/order/showCheckoutForm' method='post' id='checkoutForm'>";
-    echo "<input type='hidden' name='checkout_form' value='1'>";
-    echo "<input class='button-checkout' type='submit' value='Thanh toán'>";
-    echo "</form>";
+    echo "<button id='confirmInformationButton' class='button'>Xác nhận thông tin</button>";
+
     
+   // Form nhập thông tin người dùng
+    echo "<div id='userInfoForm' style='display:none;'>";
+    echo "<form id='userInfoForm' method='post' action='/DoAn_MNM/account/edit'>";
+    echo "<label for='name'>Họ và tên:</label>";
+    echo "<input type='text' id='name' name='name' value='" . $_SESSION['name'] . "' required><br><br>";
+    echo "<label for='email'>Email:</label>";
+    echo "<input type='text' id='email' name='email' value='" . $_SESSION['email'] . "' readonly required><br><br>";
+    echo "<label for='address'>Địa chỉ:</label>";
+    echo "<input type='text' id='address' name='address' value='" . $_SESSION['address'] . "' required><br><br>";
+    echo "<input type='submit' value='Thanh toán' id='submitUserInfoForm'>";
+    echo "</form>";
+    echo "</div>";
+
 }
 include_once 'app/views/share/footer.php';
 
@@ -61,13 +72,14 @@ if (isset($_SESSION['id'])) {
 } else {
     echo 'var isLoggedIn = false;';
 }
-
 echo '</script>';
-
-
 ?>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+document.getElementById('confirmInformationButton').addEventListener('click', function() {
+    document.getElementById('userInfoForm').style.display = 'block';
+});
+
 window.addEventListener('DOMContentLoaded', function() {
     document.getElementById('checkoutForm').addEventListener('submit', function(event) {
         if (!isLoggedIn) {
@@ -94,7 +106,28 @@ window.addEventListener('DOMContentLoaded', function() {
 
 
 </script>
+
 <script>
+    document.getElementById('submitUserInfoForm').addEventListener('click', function(event) {
+    event.preventDefault(); // Ngăn chặn hành động mặc định của nút submit
+    
+    // Lấy giá trị mới từ form
+    var newName = document.getElementById('name').value;
+    var newAddress = document.getElementById('address').value;
+    
+    // So sánh giá trị mới với giá trị trong session
+    if (newName !== '<?php echo $_SESSION["name"]; ?>' || newAddress !== '<?php echo $_SESSION["address"]; ?>') {
+        // Nếu có sự thay đổi, cập nhật thông tin trong session
+        <?php
+        $_SESSION['name'] = newName;
+        $_SESSION['address'] = newAddress;
+        ?>
+        document.getElementById('userInfoForm').submit();
+    } 
+    window.location.href = '/DoAn_MNM/order/showCheckoutForm';
+});
+
+
 function updateItemTotal() {
     document.querySelectorAll('.display tbody tr').forEach(row => {
         // Get the price text
@@ -142,9 +175,6 @@ function updateTotalCartValue() {
 
     document.getElementById('totalCartValue').textContent = formattedTotalCartValue;
 }
-
-
-
 
 function updateCartItem(id, quantity) {
     id = parseInt(id);
