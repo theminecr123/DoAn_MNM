@@ -3,7 +3,7 @@
 include_once 'app/views/share/header.php' ?>
 
 <div style="color:white;font-size:26px;font-weight: bold;">
-<div style="display:flex; justify-content: center; margin-top:-80px; margin-left:-840px; position:relative">
+<div style="display:flex; justify-content: center; margin-top:-80px; margin-left:-800px; position:relative">
     <a style="text-decoration: none;color:white;scroll-behavior: smooth;" href="#about">About</a>
 
     <a style="padding-left:80px;text-decoration: none;color:white" href="#contact">Contact</a>
