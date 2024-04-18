@@ -55,15 +55,22 @@
                         
                 </li>
                 <?php
+                    if(!isset($_SESSION['role'])){
+                        echo '
+                        <li class="nav-item active display: flex-col">
+                            <a class="nav-link" href="/DoAn_MNM/cart/show">
+                            <i class="fas fa-fw fa-tachometer-alt"></i>
+                            <span style="font-size:24px; font-weight:bold;color:white;">Giỏ Hàng</span></a>
+                        ';
+                    }
+                ?>
+                <?php
                     if (isset($_SESSION['role'])) {
                         if($_SESSION['role'] != "admin"){
                             echo'
                             <hr class="sidebar-divider">
     
-                            <li class="nav-item active display: flex-col">
-                            <a class="nav-link" href="/DoAn_MNM/cart/show">
-                            <i class="fas fa-fw fa-tachometer-alt"></i>
-                            <span style="font-size:24px; font-weight:bold;color:white;">Giỏ Hàng</span></a>
+                            
                             <a class="nav-link" href="/DoAn_MNM/order/showOrderHistory">
                             <i class="fas fa-fw fa-tachometer-alt"></i>
                             <span style="font-size:22px;">Lịch Sử Mua Hàng</span></a>
@@ -172,9 +179,8 @@
                             <ul class="navbar-nav ml-auto">
                                 <!-- Nav Item - Cart -->
                                 <?php
-                                    if (isset($_SESSION['role'])) {
-                                        if($_SESSION['role'] != "admin"){
-                                            echo'
+                                    if(!isset($_SESSION['role'])){
+                                        echo'
                                             <li class="nav-item">
                                                 <a class="nav-link" href="/DoAn_MNM/cart/show" style="font-size: 20px;">
                                                     
@@ -186,11 +192,9 @@
                                                     </button>
                                                 </a>
                                             </li>';
-                                        }
-                                        
-                
                                     }
                                 ?>
+        
                                 
                                 <!-- Other topbar items ... -->
                                 <?php
@@ -203,7 +207,7 @@
                                     <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                                         <?php
                                         if(isset($_SESSION['name'])){
-                                            echo '<a href="../account/info" style="position:absolute; top:-90px; left: 800px; font-size:30px;color: white; font-weight:bold; text-decoration: none; margin-left:-140px;margin-top:105px;">' . $_SESSION['name'] . ' | ' . $_SESSION['role'] . '</a>';
+                                            echo '<a href="../account/info" style="position:absolute; top:-90px; left: 800px; font-size:30px;color: white; font-weight:bold; text-decoration: none; margin-left:-120px;margin-top:105px;">' . $_SESSION['name'] .  '</a>';
                                             // echo "<a class='btn btn-danger' href='../account/logout'>Đăng Xuất2</a>";
                                         
                                             echo '

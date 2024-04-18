@@ -13,15 +13,12 @@
         </a>
         <!-- DataTables Example -->
         <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-            </div>
+
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>NAME</th>
                                 <th>DESCRIPTION</th>
                                 <th>PRICE</th>
@@ -35,7 +32,6 @@
                         <tbody>
                             <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
                                 <tr>
-                                    <td class='table-header-listproduct-item'><?= $row['id']; ?></td>
                                     <td style="width:200px" class='table-header-listproduct-item'><?= $row['name']; ?></td>
                                     <td style="width:400px" class='table-header-listproduct-item'><?= $row['description']; ?></td>
                                     <td class='table-header-listproduct-item'><?= number_format($row['price'], 0, '.', ''); ?></td>
