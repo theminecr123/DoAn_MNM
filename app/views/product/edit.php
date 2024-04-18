@@ -10,7 +10,7 @@ include_once 'app/views/share/header.php' ?>
     }
 ?>
 
-<form class="user" action="/QLBanXe/product/edit" method="post" enctype="multipart/form-data">
+<form class="user" action="/DoAn_MNM/product/edit" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?php echo $product->id; ?>">
     <div class="form-group">
         <input type="text" class="form-control form-control-user" name="name" value="<?php echo $product->name; ?>" placeholder="Product Name">

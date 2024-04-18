@@ -159,6 +159,7 @@ class AccountController{
             if ($result) {
                 $_SESSION['name'] = $name;
                 $_SESSION['email'] = $email;
+                $_SESSION['address'] = $address;
                 header('Location: /DoAn_MNM/account/info'); // Redirect to user info page
             } else {
                 $error = 'Failed to update user information';

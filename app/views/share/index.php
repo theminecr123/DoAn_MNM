@@ -40,7 +40,7 @@
                                         <?php if (empty($row['image']) || !file_exists($row['image'])): ?>
                                             No Image!
                                         <?php else: ?>
-                                            <img src="/QLBanXe/<?= $row['image']; ?>" alt="" style="width: 120px; height: 120px; border-radius: 20px; margin-left: 5px;">
+                                            <img src="/DoAn_MNM/<?= $row['image']; ?>" alt="" style="width: 120px; height: 120px; border-radius: 20px; margin-left: 5px;">
                                         <?php endif; ?>
                                     </td>
                                     <td style="max-width: 80px;">

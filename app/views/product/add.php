@@ -10,7 +10,7 @@ include_once 'app/views/share/header.php' ?>
     }
 ?>
 
-<form class="user" action="/QLBanXe/product/save" method="post" enctype="multipart/form-data">
+<form class="user" action="/DoAn_MNM/product/save" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <input type="text" style="border: 2px dashed black;" class="form-control form-control-user"  placeholder="Name" name="name">
     </div>
