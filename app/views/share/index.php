@@ -1,9 +1,12 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <?php include_once 'app/views/share/header.php'; ?>
-
+<link rel="stylesheet" href="../public/css/style.css">
 <div class="container-fluid">
 
+<head>
+<link href="/DoAn_MNM/public//css/style.css" rel="stylesheet">
+</head>
     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
         <a href="add">
             <button style="margin-left: -3px;" class="btn-add-product">Thêm Sản Phẩm</button>
@@ -65,21 +68,26 @@
     <?php else: ?>
         <!-- Product Blocks -->
         <div class="row">
-            <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="<?php echo empty($row['image']) || !file_exists($row['image']) ? 'path/to/default/image.jpg' : '/DoAn_MNM/' . $row['image']; ?>" alt="<?= $row['name']; ?>" class="card-img-top" style="height: 180px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $row['name']; ?></h5>
-                            <p class="card-text"><?= number_format($row['price'], 0, '', ','); ?> VND</p>
-                            <button class="btn btn-danger addToCartButton" data-id="<?= $row['id']; ?>">Thêm vào giỏ hàng</button>
-                        </div>
+        <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="<?php echo empty($row['image']) || !file_exists($row['image']) ? 'path/to/default/image.jpg' : '/DoAn_MNM/' . $row['image']; ?>" alt="<?= $row['name']; ?>" class="card-img-top" style="height: 180px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= $row['name']; ?></h5>
+                        <p class="card-text"><?= number_format($row['price'], 0, '', ','); ?> VND</p>
+                        <button class="btn btn-danger viewDetailButton" data-id="<?= $row['id']; ?>">Chi tiết</button>
+                        <button class="btn btn-danger addToCartButton" data-id="<?= $row['id']; ?>">Thêm vào giỏ hàng</button>
                     </div>
                 </div>
-            <?php endwhile; ?>
+            </div>
+        <?php endwhile; ?>
         </div>
+
+        
     <?php endif; ?>
 </div>
+
+
 
 <?php include_once 'app/views/share/footer.php'; ?>
 
@@ -88,6 +96,15 @@
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <script>
+   
+    // Đoạn script để xử lý sự kiện click vào nút "Chi tiết"
+    $('.viewDetailButton').click(function() {
+    var productId = $(this).data('id');
+    
+    // Truyền productId cho hàm detail
+    window.location.href = '/DoAn_MNM/product/detail/' + productId;
+    });
+
     $(document).ready(function() {
         // Event handler for "Add to Cart" button
         $('.addToCartButton').click(function() {

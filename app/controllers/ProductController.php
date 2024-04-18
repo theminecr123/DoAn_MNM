@@ -30,6 +30,27 @@ class ProductController
         }
 
     }
+    // ProductController.php
+
+    public function detail($productId)
+    {
+        
+        // Lấy thông tin chi tiết sản phẩm từ model
+        $product = $this->productModel->getProductById($productId);
+    
+        // Kiểm tra xem sản phẩm có tồn tại không
+        if (!$product) {
+            // Xử lý trường hợp không tìm thấy sản phẩm
+            // Ví dụ, chuyển hướng đến trang danh sách sản phẩm với thông báo lỗi
+            //header('Location: /DoAn_MNM');
+            header('Location: /DoAn_MNM/product/listProducts');
+            exit;
+        }
+    
+        // Tải view chi tiết để hiển thị thông tin sản phẩm
+        include_once 'app/views/product/detail.php';
+    }
+    
 
     public function uploadImage($file)
     {
