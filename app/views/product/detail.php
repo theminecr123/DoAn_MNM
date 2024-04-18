@@ -16,6 +16,9 @@
     </div>
 </div>
 
+
+
+<a href="/DoAn_MNM/product/listProducts">
 <button class="button_detail_product_back">
 
   
@@ -23,12 +26,14 @@
     <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"></path>
   </svg>
 
-  
+ 
   <div class="text">
     Trang Sản Phẩm
   </div>
 
 </button>
+</a>
+
 <style>
     .button_detail_product_back {
   background-color: red;
