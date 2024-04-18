@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -54,16 +54,10 @@
                         <span style="font-size:24px;">Giỏ Hàng</span></a> -->
                         
                 </li>
-                <?php
-                    if(!isset($_SESSION['role'])){
-                        echo '
-                        <li class="nav-item active display: flex-col">
+                <li class="nav-item active display: flex-col">
                             <a class="nav-link" href="/DoAn_MNM/cart/show">
                             <i class="fas fa-fw fa-tachometer-alt"></i>
                             <span style="font-size:24px; font-weight:bold;color:white;">Giỏ Hàng</span></a>
-                        ';
-                    }
-                ?>
                 <?php
                     if (isset($_SESSION['role'])) {
                         if($_SESSION['role'] != "admin"){
@@ -178,10 +172,7 @@
                         <ul class="navbar-nav ml-auto">
                             <ul class="navbar-nav ml-auto">
                                 <!-- Nav Item - Cart -->
-                                <?php
-                                    if(!isset($_SESSION['role'])){
-                                        echo'
-                                            <li class="nav-item">
+                                <li class="nav-item">
                                                 <a class="nav-link" href="/DoAn_MNM/cart/show" style="font-size: 20px;">
                                                     
                                                     <button style="margin-top:20px;margin-left:-600px;" class="CartBtn">
@@ -191,9 +182,7 @@
                                                     <p class="text-cart">Giỏ Hàng</p>
                                                     </button>
                                                 </a>
-                                            </li>';
-                                    }
-                                ?>
+                                            </li>
         
                                 
                                 <!-- Other topbar items ... -->

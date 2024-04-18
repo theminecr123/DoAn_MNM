@@ -173,4 +173,31 @@ class AccountController{
         include_once 'app/views/account/edit_info.php';
     }
     
+    public function editInfo() {
+        if (!isset($_SESSION['id'])) {
+            header('Location: /DoAn_MNM/account/login');
+            exit;
+        }
+
+        $userId = $_SESSION['id'];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Retrieve form data
+            $name = $_POST['name'] ?? '';
+            $email = $_POST['email'] ?? '';
+            $address = $_POST['address'] ?? '';
+
+            // Update the user's information
+            $result = $this->accountModel->updateAccount($userId, $name, $email, $address);
+
+            if ($result) {
+                header('Location: /DoAn_MNM/order/showCheckoutForm'); // Redirect to user info page
+            } else {
+                $error = 'Failed to update user information';
+            }
+        }
+
+        // Get user information
+        $user = $this->accountModel->getAccountById($userId);
+    }
 }

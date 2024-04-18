@@ -47,21 +47,30 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
     echo "</table>";
     // Thêm một định dạng mới với id 'totalCartValueContainer'
     echo "<p style='font-weight:bold; color:black; font-size:24px;' id='totalCartValueContainer'>Total Cart Value: <span id='totalCartValue'></span></p>";
-    echo "<button id='confirmInformationButton' class='button'>Xác nhận thông tin</button>";
+    echo "<input id='confirmInformationButton' type='submit' value='Xác nhận' class='button-checkout'></input>";
 
     
    // Form nhập thông tin người dùng
-    echo "<div id='userInfoForm' style='display:none;'>";
-    echo "<form id='userInfoForm' method='post' action='/DoAn_MNM/account/edit'>";
-    echo "<label for='name'>Họ và tên:</label>";
-    echo "<input type='text' id='name' name='name' value='" . $_SESSION['name'] . "' required><br><br>";
-    echo "<label for='email'>Email:</label>";
-    echo "<input type='text' id='email' name='email' value='" . $_SESSION['email'] . "' readonly required><br><br>";
-    echo "<label for='address'>Địa chỉ:</label>";
-    echo "<input type='text' id='address' name='address' value='" . $_SESSION['address'] . "' required><br><br>";
-    echo "<input type='submit' value='Thanh toán' id='submitUserInfoForm'>";
-    echo "</form>";
-    echo "</div>";
+   echo "<div id='userInfoForm' style='display: none; margin-top: 20px;'>"; // Added margin top for better spacing
+   echo "<form id='userInfoForm' method='post' action='/DoAn_MNM/account/editInfo' class='form-group' style='max-width: 500px; margin: auto;'>"; // Added max-width and center form
+   echo "<div class='form-group'>";
+   echo "<label for='name'>Họ và tên:</label>";
+   echo "<input type='text' id='name' name='name' class='form-control' value='" . $_SESSION['name'] . "' required>";
+   echo "</div>";
+   echo "<div class='form-group'>";
+   echo "<label for='email'>Email:</label>";
+   echo "<input type='email' id='email' name='email' class='form-control' value='" . $_SESSION['email'] . "' readonly required>";
+   echo "</div>";
+   echo "<div class='form-group'>";
+   echo "<label for='address'>Địa chỉ:</label>";
+   echo "<input type='text' id='address' name='address' class='form-control' value='" . $_SESSION['address'] . "' required>";
+   echo "</div>";
+   echo "<div class='form-group'>";
+   echo "<input type='submit' value='Lưu thay đổi' id='submitUserInfoForm' class='btn btn-primary'>"; // Changed button text and added Bootstrap class
+   echo "</div>";
+   echo "</form>";
+   echo "</div>";
+   
 
 }
 include_once 'app/views/share/footer.php';
@@ -76,12 +85,10 @@ echo '</script>';
 ?>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-document.getElementById('confirmInformationButton').addEventListener('click', function() {
-    document.getElementById('userInfoForm').style.display = 'block';
-});
+
 
 window.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('checkoutForm').addEventListener('submit', function(event) {
+    document.getElementById('confirmInformationButton').addEventListener('click', function(event) {
         if (!isLoggedIn) {
             // Use SweetAlert to show an alert
             Swal.fire({
@@ -100,6 +107,9 @@ window.addEventListener('DOMContentLoaded', function() {
             
             // Prevent form submission
             event.preventDefault();
+        }else{
+            document.getElementById('userInfoForm').style.display = 'block';
+
         }
     });
 });
