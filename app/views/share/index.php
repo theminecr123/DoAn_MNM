@@ -36,8 +36,8 @@
                             <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
                                 <tr>
                                     <td class='table-header-listproduct-item'><?= $row['id']; ?></td>
-                                    <td class='table-header-listproduct-item'><?= $row['name']; ?></td>
-                                    <td class='table-header-listproduct-item'><?= $row['description']; ?></td>
+                                    <td style="width:200px" class='table-header-listproduct-item'><?= $row['name']; ?></td>
+                                    <td style="width:400px" class='table-header-listproduct-item'><?= $row['description']; ?></td>
                                     <td class='table-header-listproduct-item'><?= number_format($row['price'], 0, '.', ''); ?></td>
                                     <td style="max-width: 120px;">
                                         <?php if (empty($row['image']) || !file_exists($row['image'])): ?>
