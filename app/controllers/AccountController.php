@@ -32,7 +32,7 @@ class AccountController{
             $email = $_POST['email'] ?? '';
             $password = $_POST['password'] ?? '';
             $confirmPassword = $_POST['confirmPassword'] ?? '';
-            $role = $_POST['role'] ?? '';
+            $role = "user";
     
             $errors=[];
             if(empty($name)){

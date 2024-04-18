@@ -21,8 +21,10 @@ include_once 'app/views/share/header.php' ?>
         <input type="text" style="border: 2px dashed black;"  class="form-control form-control-user" placeholder="Price" name="price">
     </div>
     <div class="form-group">
-        <input type="file" style="border: 2px dashed black;" class="form-control form-control-user"  placeholder="" name="image">
+        <input type="file" style="border: 2px dashed black;" class="form-control form-control-user" name="image" id="image-upload">
+        <img id="image-preview" src="" alt="Image Preview" style="display: none; max-width: 200px; margin-top: 10px;">
     </div>
+
     <!-- <button href="index.html" style="width:100px;" class="btn btn-primary btn-user btn-block" name = "submit">Submit</button> -->
 
     <button  href="index.html"style="width:150px; height:50px;" class="btn btn-primary btn-user btn-block" name = "submit">
@@ -109,3 +111,28 @@ button:active {
 
 <?php
 include_once 'app/views/share/footer.php' ?>
+
+<script>
+    // Function to handle image upload and preview
+    function handleImageUpload(event) {
+        const file = event.target.files[0]; // Get the uploaded file
+        const imagePreview = document.getElementById('image-preview'); // Get the image preview element
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                imagePreview.src = e.target.result;
+            };
+
+            reader.readAsDataURL(file);
+
+            imagePreview.style.display = 'block';
+        } else {
+            imagePreview.style.display = 'none';
+        }
+    }
+
+    const imageUpload = document.getElementById('image-upload');
+    imageUpload.addEventListener('change', handleImageUpload);
+</script>

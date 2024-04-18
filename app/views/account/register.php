@@ -29,11 +29,7 @@ $emailValue = isset($_POST['email']) ? $_POST['email'] : '';
     <div style="margin-left:50px; width:500px; font-size:18px;border: 1px dashed black;border-radius:50px" class="form-group">
         <input type="password" maxlength="50" class="form-control form-control-user" placeholder="Confirm Password" name="confirmPassword">
     </div>
-    <select name="role" class="custom-select">
-        <option value="admin">Admin</option>
-        <option value="mod">Mod</option>
-        <option value="user">User</option>
-    </select>
+
     <button style="margin-left:50px; width:500px; font-size:18px; margin-top:20px;" class="btn btn-primary btn-user btn-block" name="submit">Register</button>
 </form>
 <style>

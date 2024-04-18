@@ -55,15 +55,22 @@
                         
                 </li>
                 <?php
+                    if(!isset($_SESSION['role'])){
+                        echo '
+                        <li class="nav-item active display: flex-col">
+                            <a class="nav-link" href="/DoAn_MNM/cart/show">
+                            <i class="fas fa-fw fa-tachometer-alt"></i>
+                            <span style="font-size:24px; font-weight:bold;color:white;">Giỏ Hàng</span></a>
+                        ';
+                    }
+                ?>
+                <?php
                     if (isset($_SESSION['role'])) {
                         if($_SESSION['role'] != "admin"){
                             echo'
                             <hr class="sidebar-divider">
     
-                            <li class="nav-item active display: flex-col">
-                            <a class="nav-link" href="/DoAn_MNM/cart/show">
-                            <i class="fas fa-fw fa-tachometer-alt"></i>
-                            <span style="font-size:24px; font-weight:bold;color:white;">Giỏ Hàng</span></a>
+                            
                             <a class="nav-link" href="/DoAn_MNM/order/showOrderHistory">
                             <i class="fas fa-fw fa-tachometer-alt"></i>
                             <span style="font-size:22px;">Lịch Sử Mua Hàng</span></a>
@@ -172,9 +179,8 @@
                             <ul class="navbar-nav ml-auto">
                                 <!-- Nav Item - Cart -->
                                 <?php
-                                    if (isset($_SESSION['role'])) {
-                                        if($_SESSION['role'] != "admin"){
-                                            echo'
+                                    if(!isset($_SESSION['role'])){
+                                        echo'
                                             <li class="nav-item">
                                                 <a class="nav-link" href="/DoAn_MNM/cart/show" style="font-size: 20px;">
                                                     
@@ -186,11 +192,9 @@
                                                     </button>
                                                 </a>
                                             </li>';
-                                        }
-                                        
-                
                                     }
                                 ?>
+        
                                 
                                 <!-- Other topbar items ... -->
                                 <?php
@@ -203,7 +207,7 @@
                                     <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                                         <?php
                                         if(isset($_SESSION['name'])){
-                                            echo '<a href="../account/info" style="position:absolute; top:-90px; left: 800px; font-size:30px;color: white; font-weight:bold; text-decoration: none; margin-left:-140px;margin-top:105px;">' . $_SESSION['name'] . ' | ' . $_SESSION['role'] . '</a>';
+                                            echo '<a href="../account/info" style="position:absolute; top:-90px; left: 800px; font-size:30px;color: white; font-weight:bold; text-decoration: none; margin-left:-120px;margin-top:105px;">' . $_SESSION['name'] .  '</a>';
                                             // echo "<a class='btn btn-danger' href='../account/logout'>Đăng Xuất2</a>";
                                         
                                             echo '
@@ -291,5 +295,71 @@
 }
 
 
-
+.CartBtn {
+    width: 145px;
+    height: 40px;
+    border-radius: 12px;
+    border: none;
+    background-color: rgb(255, 208, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition-duration: .5s;
+    overflow: hidden;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.103);
+    position: relative;
+    top:-10px;
+    left:-30px;
+  }
+  
+  .IconContainer {
+    position: absolute;
+    left: -50px;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 2;
+    transition-duration: .5s;
+  }
+  
+  .icon {
+    border-radius: 1px;
+  }
+  
+  .text-cart{
+    height: 100%;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(17, 17, 17);
+    z-index: 1;
+    transition-duration: .5s;
+    font-size: 1.04em;
+    font-weight: 600;
+    margin-top:14px;
+    font-family: Whitney, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  }
+  
+  .CartBtn:hover .IconContainer {
+    transform: translateX(58px);
+    border-radius: 40px;
+    transition-duration: .5s;
+  }
+  
+  .CartBtn:hover .text-cart {
+    transform: translate(10px,0px);
+    transition-duration: .5s;
+  }
+  
+  .CartBtn:active {
+    transform: scale(0.95);
+    transition-duration: .5s;
+  }
                     </style>

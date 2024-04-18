@@ -79,6 +79,32 @@ echo '</script>';
 document.getElementById('confirmInformationButton').addEventListener('click', function() {
     document.getElementById('userInfoForm').style.display = 'block';
 });
+
+window.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('checkoutForm').addEventListener('submit', function(event) {
+        if (!isLoggedIn) {
+            // Use SweetAlert to show an alert
+            Swal.fire({
+                title: 'Login Required',
+                text: 'You must be logged in to proceed with checkout.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Log In',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If the user clicks "Log In", redirect them to the login page
+                    window.location.href = '/DoAn_MNM/account/login';
+                }
+            });
+            
+            // Prevent form submission
+            event.preventDefault();
+        }
+    });
+});
+
+
 </script>
 
 <script>
@@ -131,29 +157,22 @@ function updateItemTotal() {
 function updateTotalCartValue() {
     let total = 0;
     document.querySelectorAll('.display tbody tr').forEach(row => {
-        // Retrieve the formatted item total
         let totalItemText = row.querySelector('.itemTotal').textContent;
         
-        // Remove the currency symbol (₫) and replace periods (thousand separators) with an empty string
         let totalItemString = totalItemText.replace(/[^\d.,]/g, '');
         
-        // Replace the comma (used as decimal separator in formatted input) with a period
         totalItemString = totalItemString.replace(/\./g, '').replace(',', '.');
         
-        // Convert the cleaned string to a floating-point number
         let totalItemNumber = parseFloat(totalItemString);
         
-        // Add the item total to the overall total
         total += totalItemNumber;
     });
 
-    // Format the total cart value as currency in VND
     let formattedTotalCartValue = total.toLocaleString('vi-VN', {
         style: 'currency',
         currency: 'VND'
     });
 
-    // Update the total cart value on the web page
     document.getElementById('totalCartValue').textContent = formattedTotalCartValue;
 }
 
