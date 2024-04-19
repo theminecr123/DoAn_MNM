@@ -50,28 +50,27 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
     echo "<input id='confirmInformationButton' type='submit' value='Xác nhận' class='button-checkout'></input>";
 
     
-   // Form nhập thông tin người dùng
-   echo "<div id='userInfoForm' style='display: none; margin-top: 20px;'>"; // Added margin top for better spacing
-   echo "<form id='userInfoForm' method='post' action='/DoAn_MNM/account/editInfo' class='form-group' style='max-width: 500px; margin: auto;'>"; // Added max-width and center form
-   echo "<div class='form-group'>";
-   echo "<label for='name'>Họ và tên:</label>";
-   echo "<input type='text' id='name' name='name' class='form-control' value='" . $_SESSION['name'] . "' required>";
-   echo "</div>";
-   echo "<div class='form-group'>";
-   echo "<label for='email'>Email:</label>";
-   echo "<input type='email' id='email' name='email' class='form-control' value='" . $_SESSION['email'] . "' readonly required>";
-   echo "</div>";
-   echo "<div class='form-group'>";
-   echo "<label for='address'>Địa chỉ:</label>";
-   echo "<input type='text' id='address' name='address' class='form-control' value='" . $_SESSION['address'] . "' required>";
-   echo "</div>";
-   echo "<div class='form-group'>";
-   echo "<input type='submit' value='Lưu thay đổi' id='submitUserInfoForm' class='btn btn-primary'>"; // Changed button text and added Bootstrap class
-   echo "</div>";
-   echo "</form>";
-   echo "</div>";
-   
-
+    // Form nhập thông tin người dùng
+    echo "<div id='userInfoForm' style='display: none; margin-top: 20px;'>"; // Added margin top for better spacing
+    echo "<form id='userInfoForm' method='post' action='/DoAn_MNM/account/editInfo' class='form-group' style='max-width: 500px; margin: auto;'>"; // Added max-width and center form
+    echo "<div class='form-group'>";
+    echo "<label for='name'>Họ và tên:</label>";
+    echo "<input type='text' id='name' name='name' class='form-control' value='" . $_SESSION['name'] . "' required>";
+    echo "</div>";
+    echo "<div class='form-group'>";
+    echo "<label for='email'>Email:</label>";
+    echo "<input type='email' id='email' name='email' class='form-control' value='" . $_SESSION['email'] . "' readonly required>";
+    echo "</div>";
+    echo "<div class='form-group'>";
+    echo "<label for='address'>Địa chỉ:</label>";
+    echo "<input type='text' id='address' name='address' class='form-control' value='" . $_SESSION['address'] . "' required>";
+    echo "</div>";
+    echo "<div class='form-group'>";
+    echo "<input type='submit' value='Lưu thay đổi' id='submitUserInfoForm' class='btn btn-primary'>"; // Changed button text and added Bootstrap class
+    echo "</div>";
+    echo "</form>";
+    echo "</div>";
+    
 }
 include_once 'app/views/share/footer.php';
 
@@ -81,14 +80,15 @@ if (isset($_SESSION['id'])) {
 } else {
     echo 'var isLoggedIn = false;';
 }
+
 echo '</script>';
+
+
 ?>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-
-
 window.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('confirmInformationButton').addEventListener('click', function(event) {
+    document.getElementById('checkoutForm').addEventListener('submit', function(event) {
         if (!isLoggedIn) {
             // Use SweetAlert to show an alert
             Swal.fire({
@@ -116,28 +116,37 @@ window.addEventListener('DOMContentLoaded', function() {
 
 
 </script>
-
 <script>
-    document.getElementById('submitUserInfoForm').addEventListener('click', function(event) {
-    event.preventDefault(); // Ngăn chặn hành động mặc định của nút submit
-    
-    // Lấy giá trị mới từ form
-    var newName = document.getElementById('name').value;
-    var newAddress = document.getElementById('address').value;
-    
-    // So sánh giá trị mới với giá trị trong session
-    if (newName !== '<?php echo $_SESSION["name"]; ?>' || newAddress !== '<?php echo $_SESSION["address"]; ?>') {
-        // Nếu có sự thay đổi, cập nhật thông tin trong session
-        <?php
-        $_SESSION['name'] = newName;
-        $_SESSION['address'] = newAddress;
-        ?>
-        document.getElementById('userInfoForm').submit();
-    } 
-    window.location.href = '/DoAn_MNM/order/showCheckoutForm';
+    window.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('confirmInformationButton').addEventListener('click', function(event) {
+        if (!isLoggedIn) {
+            // Use SweetAlert to show an alert
+            Swal.fire({
+                title: 'Login Required',
+                text: 'You must be logged in to proceed with checkout.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Log In',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If the user clicks "Log In", redirect them to the login page
+                    window.location.href = '/DoAn_MNM/account/login';
+                }
+            });
+            
+            // Prevent form submission
+            event.preventDefault();
+        }else{
+            document.getElementById('userInfoForm').style.display = 'block';
+
+        }
+    });
 });
 
-
+</script>
+<script>
+    
 function updateItemTotal() {
     document.querySelectorAll('.display tbody tr').forEach(row => {
         // Get the price text
@@ -185,6 +194,9 @@ function updateTotalCartValue() {
 
     document.getElementById('totalCartValue').textContent = formattedTotalCartValue;
 }
+
+
+
 
 function updateCartItem(id, quantity) {
     id = parseInt(id);
@@ -258,4 +270,3 @@ window.onload = function() {
     updateTotalCartValue();
 };
 </script>
-
